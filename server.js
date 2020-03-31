@@ -1,12 +1,16 @@
 require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
+const helmet = require('helmet')
 const POKEDEX = require('./pokedex.json')
+const cors = require('cors')
 console.log(process.env.API_TOKEN)
 
 const app = express()
 
 app.use(morgan('dev'))
+app.use(helmet())
+app.use(cors())
 
 const validTypes = [`Bug`, `Dark`, `Dragon`, `Electric`, `Fairy`, `Fighting`, `Fire`, `Flying`, `Ghost`, `Grass`, `Ground`, `Ice`, `Normal`, `Poison`, `Psychic`, `Rock`, `Steel`, `Water`]
 
